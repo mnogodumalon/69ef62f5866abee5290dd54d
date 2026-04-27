@@ -7,7 +7,7 @@ import { LivingAppsService, createRecordUrl, extractRecordId } from '@/services/
 import { formatDate } from '@/lib/formatters';
 import { useState, useMemo } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
-import { IconAlertCircle, IconTool, IconRefresh, IconCheck, IconPlus, IconPencil, IconTrash, IconChevronLeft, IconChevronRight, IconCalendar, IconUsers, IconClock, IconBriefcase } from '@tabler/icons-react';
+import { IconAlertCircle, IconTool, IconRefresh, IconCheck, IconPlus, IconPencil, IconTrash, IconChevronLeft, IconChevronRight, IconCalendar, IconUsers, IconClock, IconBriefcase, IconLayoutGrid } from '@tabler/icons-react';
 import { Button } from '@/components/ui/button';
 import { StatCard } from '@/components/StatCard';
 import { ConfirmDialog } from '@/components/ConfirmDialog';
@@ -150,6 +150,23 @@ export default function DashboardOverview() {
 
   return (
     <div className="space-y-6">
+      {/* Workflow-Navigation */}
+      <div className="grid grid-cols-1 gap-3">
+        <a
+          href="#/intents/wochenplan"
+          className="flex items-center gap-4 bg-card border border-border rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow border-l-4 border-l-primary overflow-hidden"
+        >
+          <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+            <IconLayoutGrid size={20} className="text-primary" />
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="font-semibold text-sm text-foreground">Wochenplan erstellen</p>
+            <p className="text-xs text-muted-foreground mt-0.5 truncate">Weise mehreren Mitarbeitern in einem Schritt Schichten für eine ganze Woche zu</p>
+          </div>
+          <IconChevronRight size={18} className="text-muted-foreground shrink-0" />
+        </a>
+      </div>
+
       {/* KPI-Karten */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
         <StatCard

@@ -6,7 +6,6 @@ import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { ErrorBusProvider } from '@/components/ErrorBus';
 import { Layout } from '@/components/Layout';
 import DashboardOverview from '@/pages/DashboardOverview';
-import { WorkflowPlaceholders } from '@/components/WorkflowPlaceholders';
 import AdminPage from '@/pages/AdminPage';
 import MitarbeiterPage from '@/pages/MitarbeiterPage';
 import SchichttypenPage from '@/pages/SchichttypenPage';
@@ -17,6 +16,7 @@ import PublicFormSchichtplan from '@/pages/public/PublicForm_Schichtplan';
 // <public:imports>
 // </public:imports>
 // <custom:imports>
+const WochenplanPage = lazy(() => import('@/pages/intents/WochenplanPage'));
 // </custom:imports>
 
 export default function App() {
@@ -32,12 +32,13 @@ export default function App() {
               {/* <public:routes> */}
               {/* </public:routes> */}
               <Route element={<Layout />}>
-                <Route index element={<><div className="mb-8"><WorkflowPlaceholders /></div><DashboardOverview /></>} />
+                <Route index element={<DashboardOverview />} />
                 <Route path="mitarbeiter" element={<MitarbeiterPage />} />
                 <Route path="schichttypen" element={<SchichttypenPage />} />
                 <Route path="schichtplan" element={<SchichtplanPage />} />
                 <Route path="admin" element={<AdminPage />} />
                 {/* <custom:routes> */}
+                <Route path="intents/wochenplan" element={<Suspense fallback={null}><WochenplanPage /></Suspense>} />
                 {/* </custom:routes> */}
               </Route>
             </Routes>
